@@ -1,0 +1,162 @@
+/* ========================================
+   GRUNDLAYOUT: Sticky-Footer mit CSS Grid
+   ======================================== */
+
+/* 
+ * html/body müssen volle Viewport-Höhe haben, damit das Grid funktioniert
+ * margin/padding: 0 verhindert unerwünschte Abstände durch Browser-Defaults
+ */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* 
+ * Body wird zum Grid-Container für Sticky-Footer-Layout:
+ * - 1fr = verbleibender Platz (streckt sich auf volle Viewport-Höhe)
+ * - auto = natürliche Höhe des Footers 
+ * min-height: 100vh sorgt dafür, dass Footer immer am Viewport-Bottom klebt
+ */
+body {
+  display: grid;
+  grid-template-rows: 1fr auto;  /* Hauptinhalt (main) + Footer */
+  min-height: 100vh;             /* Mindesthöhe = voller Bildschirm */
+  width: 100%;
+  background-color: rgb(79, 21, 134);  
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+  gap: 20px;  /* Abstand zwischen main und footer */
+}
+
+
+/* ========================================
+   TYPOGRAFIE & TEXT
+   ======================================== */
+
+h1 {
+  /* Dunkelgrüner h1 mit goldenem Hintergrund */
+  display: block;
+  width: 100%;
+  color: darkgreen;
+  font-family: 'Franklin Gothic Medium', Arial, sans-serif;
+  background-color: goldenrod;
+  padding: 10px;
+  margin: 0 0 20px 0;
+}
+
+h2 {
+  /* Dunkelgrüne h2 mit Einzug */
+  color: darkgreen;
+  font-family: 'Franklin Gothic Medium', Arial, sans-serif;
+  background-color: rgb(106, 0, 0);
+  color: rgb(255, 255, 255);
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+}
+
+.alert_button_success {
+  /* Grüner pulsierender Success-Button */
+  width: fit-content;
+  height: fit-content;
+  animation: fade 4s infinite;
+  background-color: darkgreen;
+  color: rgb(255, 255, 255);
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+}
+
+.button_click {
+  /* Goldenrod Button-Variante */
+  border-color: rgb(79, 21, 134);
+  background-color: goldenrod;
+  color: darkgreen;
+  padding: 10px 20px;
+  border: 2px solid;
+  cursor: pointer;
+}
+
+/* ========================================
+   ANIMIERUNG (Fade-Effekt)
+   ======================================== */
+
+@keyframes fade {
+  0% { opacity: 1; }
+  50% { opacity: 0.3; }    /* Kurz "ausblenden" */
+  100% { opacity: 1; }
+}
+
+/* ========================================
+   CONTAINER (Flask/Jinja Blocks)
+   ======================================== */
+
+.container {
+  max-width: 100%;  /* Verhindert horizontales Scrollen */
+}
+
+.container1 {
+  margin-bottom: 20px;  /* Abstand zum Footer */
+}
+
+/* ========================================
+   TYPOGRAFIE & TEXT
+   ======================================== */
+
+h1 {
+  /* Dunkelgrüner h1 mit goldenem Hintergrund */
+  display: block;
+  width: 100%;
+  color: darkgreen;
+  font-family: 'Franklin Gothic Medium', Arial, sans-serif;
+  background-color: goldenrod;
+  padding: 10px;
+  margin: 0 0 20px 0;
+}
+
+h2 {
+  /* Dunkelgrüne h2 mit Einzug */
+  color: darkgreen;
+  font-family: 'Franklin Gothic Medium', Arial, sans-serif;
+  margin-left: 20px;
+}
+
+h3 {
+  /* Goldene h3 */
+  color: goldenrod;
+}
+
+p {
+  /*  p-Styling */
+  color: rgba(0, 7, 0, 0.877);
+  font-family: Impact, 'Arial Narrow Bold', sans-serif;
+  font-size: x-large;
+  margin-left: 15px;
+  width: auto;  /* display: flex entfernt für bessere Lesbarkeit */
+}
+
+pre {
+  /* Code-Blöcke mit goldenem Text */
+  color: goldenrod;
+  font-style: italic;
+  margin-left: 20px;
+  background-color: rgba(0,0,0,0.3);
+  padding: 10px;
+}
+
+blockquote {
+  /* Zitat-Styling */
+  color: aliceblue;
+  font-style: italic;
+  padding: 20px;
+  background-color: rgba(0,0,0,0.3);
+  margin: 20px;
+}
+
+li {
+  /* Weiße Listeneinträge */
+  color: rgb(255, 255, 255);
+}
+
+

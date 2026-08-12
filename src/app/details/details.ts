@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HousingService } from '../housing.service';
 import { HousingLocationInfo } from '../housinglocation';
@@ -48,6 +48,7 @@ styleUrl: './details.css',
 })
 
 export class DetailsComponent {
+  private changeDetectorRef = inject(ChangeDetectorRef)
 
 route: ActivatedRoute = inject(ActivatedRoute);
 housingService = inject(HousingService);
@@ -63,8 +64,12 @@ applyForm = new FormGroup({
 })
 
 constructor() {
-this.housingLocationId = Number(this.route.snapshot.params['id']);
-this.housingLocation = this.housingService.getHousingLocationById(this.housingLocationId);
+const housingLocationId = parseInt(this.route.snapshot.params['id'],10);
+this.housingService.getHousingLocationById(housingLocationId).then((housingLocation)=>{
+  this.housingLocation = housingLocation;
+  this.changeDetectorRef.markForCheck();
+}
+)
 }
 submitApplication(){
   this.housingService.submitApplication(
